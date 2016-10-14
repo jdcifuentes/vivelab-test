@@ -1,0 +1,91 @@
+<?php
+/**
+ * Platform name vivelab_prueba.
+ * @author Daniel Cifuentes
+ * Date: 10/13/16
+ */
+?>
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Test-Vivelab</title>
+
+    <script>
+        function sumNumbers(numberA, numberB) {
+            var parametros = {
+                "numberA": numberA,
+                "numberB": numberB
+            };
+            $.ajax({
+                data: parametros,
+                url: 'intSum.php',
+                type: 'post',
+                beforeSend: function () {
+                    $("#answer").html("Sumando...");
+                },
+                success: function (response) {
+                    $("#answer").html(response);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>Prueba VIVELAB - Daniel Cifuentes G</h2>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <p>La prueba consiste en implementar esta historia de usuario. Debe resolverse usando PHP y JS. Se evaluará
+                su correcto funcionamiento y las buenas prácticas en el código.
+
+                Historia de usuario
+
+                Como usuario
+                Quiero un programa que reciba dos números enteros en inglés, los sume y devuelva el resultado
+                Para practicar mis operaciones
+
+                Criterios de aceptación:
+                -El programa recibe los números en inglés, por ejemplo: “one”, “two”, “ten”, etc.
+                -Si hay un número inválido se debe retornar “zero”
+                -El proyecto debe compartirse por medio de Github.
+                -Debe tener cubrimiento de pruebas unitarias
+            </p>
+
+            <form>
+                <div class="form-group">
+                    <label for="numberA">Número A</label>
+                    <input type="text" class="form-control" id="numberA" placeholder="number a">
+                </div>
+                <div class="form-group">
+                    <label for="numberB">Número B</label>
+                    <input type="text" class="form-control" id="numberB" placeholder="number b">
+                </div>
+
+                <input type="button" class="btn btn-default"
+                       onclick="sumNumbers($('#numberA').val(), $('#numberB').val())" value="Sumar"/>
+            </form>
+
+            <hr>
+            <blockquote>
+                <p id="answer">zero</p>
+            </blockquote>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
